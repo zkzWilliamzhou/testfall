@@ -1,31 +1,5 @@
-/**
- * Project: testfall
- * Core module
- */
-
-export interface Config {
-  name: string;
-  version: string;
+export interface Config { name: string; version: string; }
+export class Core { config: Config; constructor(c: Config) { this.config = c; }
+  execute(input: string): string { return `Executed: ${input}`; }
 }
-
-export class Core {
-  private config: Config;
-
-  constructor(config: Config) {
-    this.config = config;
-  }
-
-  execute(input: string): string {
-    return `Executed: ${input}`;
-  }
-
-  getConfig(): Config {
-    return { ...this.config };
-  }
-}
-
-export function createCore(config: Config): Core {
-  return new Core(config);
-}
-
-export default Core;
+export function createCore(config: Config): Core { return new Core(config); }
